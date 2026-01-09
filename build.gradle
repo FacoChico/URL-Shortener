@@ -12,12 +12,12 @@ description = 'url-shortener'
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
+        languageVersion = JavaLanguageVersion.of(21)
     }
 }
 
 ext {
-    set('lombokVersion', '1.18.24')
+    set('lombokVersion', '1.18.42')
 }
 
 repositories {

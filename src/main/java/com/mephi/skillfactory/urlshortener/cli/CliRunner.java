@@ -75,19 +75,19 @@ public class CliRunner implements CommandLineRunner {
     private void printHelp() {
         System.out.println("""
             Commands:
-              create <url>         - create new short link (you will be prompted for optional params)
-              open <code>          - open short link in browser (increments click count)
-              list                 - list your links
-              delete <code>        - delete your link
-              notifications        - list your notifications
-              uid                  - show current user id
-              setuid <uuid|new>    - set current user id (or 'new' to generate new one)
+              create <url>      — create new short link
+              open <code>       — open short link in browser
+              list              — list your links
+              delete <code>     — delete your link
+              notifications     — list your notifications
+              uid               — show current user id
+              setuid <id|new>   — set current user id or generate new one
             """);
     }
 
     private void setUser(String arg) {
         if (arg == null || arg.isBlank()) {
-            System.out.println("Usage: setuid <uuid|new>");
+            System.out.println("Usage: setuid <id|new>");
             return;
         }
 
@@ -153,7 +153,7 @@ public class CliRunner implements CommandLineRunner {
 
     private void openByCode(String code) {
         if (code == null || code.isBlank()) {
-            System.out.println("Usage: open <shortCode>");
+            System.out.println("Usage: open <code>");
             return;
         }
 
@@ -215,7 +215,7 @@ public class CliRunner implements CommandLineRunner {
 
     private void deleteLink(String code) {
         if (code == null || code.isBlank()) {
-            System.out.println("Usage: delete <shortCode>");
+            System.out.println("Usage: delete <code>");
             return;
         }
         if (currentUserId == null) {
@@ -250,7 +250,7 @@ public class CliRunner implements CommandLineRunner {
             }
             System.out.println("Notifications:");
             for (final var notification : notifications) {
-                System.out.println("  - " + notification);
+                System.out.println("  — " + notification);
             }
         } catch (Exception e) {
             System.out.println("Failed to fetch notifications: " + e.getMessage());
