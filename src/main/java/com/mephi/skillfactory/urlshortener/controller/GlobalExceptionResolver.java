@@ -15,8 +15,7 @@ public class GlobalExceptionResolver {
 
     @ExceptionHandler(SecurityException.class)
     public ResponseEntity<?> handleSecurityException(SecurityException e) {
-        final var message = e.getMessage();
-        log.debug("Handled SecurityException: {}", message);
+        log.debug("Handled SecurityException: {}", e.getMessage());
         return ResponseEntity
             .status(HttpStatus.FORBIDDEN)
             .body(e.getMessage());
@@ -24,8 +23,7 @@ public class GlobalExceptionResolver {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<?> handleException(Exception e) {
-        final var message = e.getMessage();
-        log.error("Handled HTTP 500 Bad Request: {}", message);
+        log.error("Handled HTTP 500 Bad Request: {}", e.getMessage());
         return ResponseEntity
             .status(HttpStatus.INTERNAL_SERVER_ERROR)
             .body(e.getMessage());

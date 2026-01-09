@@ -41,12 +41,12 @@ public class InMemoryLinkRepository implements LinkRepository {
 
     @Override
     public List<Link> findLinksByUserId(UUID userId) {
-        Set<String> codes = codesByUserId.getOrDefault(userId, Collections.emptySet());
-        List<Link> out = new ArrayList<>();
-        for (String c : codes) {
-            Link l = linkByCode.get(c);
-            if (l != null) {
-                out.add(l);
+        final var codes = codesByUserId.getOrDefault(userId, Collections.emptySet());
+        final var out = new ArrayList<Link>();
+        for (String code : codes) {
+            final var link = linkByCode.get(code);
+            if (link != null) {
+                out.add(link);
             }
         }
         return out;
@@ -54,11 +54,11 @@ public class InMemoryLinkRepository implements LinkRepository {
 
     @Override
     public void deleteLinkByCode(String code) {
-        Link removed = linkByCode.remove(code);
+        final var removed = linkByCode.remove(code);
         if (removed != null) {
-            Set<String> set = codesByUserId.get(removed.getUserId());
-            if (set != null) {
-                set.remove(code);
+            final var codes = codesByUserId.get(removed.getUserId());
+            if (codes != null) {
+                codes.remove(code);
             }
         }
     }
