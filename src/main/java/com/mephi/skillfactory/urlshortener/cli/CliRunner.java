@@ -53,10 +53,9 @@ public class CliRunner implements CommandLineRunner {
 
                 switch (cmd) {
                     case "help", "h" -> printHelp();
-                    case "uid" -> System.out.printf("Current user id: %s%n",
-                        currentUserId == null
-                            ? "<not set>"
-                            : currentUserId);
+                    case "uid" -> System.out.printf("Current user id: %s%n", currentUserId == null
+                        ? "<not set>"
+                        : currentUserId);
                     case "setuid" -> setUser(arg);
                     case "create" -> createNewShortLink(arg, sc);
                     case "open" -> openByCode(arg);
@@ -209,13 +208,8 @@ public class CliRunner implements CommandLineRunner {
 
             System.out.println("Your links:");
             for (Link link : links) {
-                System.out.printf("  %s -> %s | clicks=%d/%s | created=%s | active=%s%n",
-                    link.getCode(),
-                    link.getTargetUrl(),
-                    link.getClickCount().get(),
-                    link.getMaxClicks(),
-                    link.getCreatedAt(),
-                    link.isActive());
+                System.out.printf("  %s -> %s | clicks=%d/%s | created=%s | active=%s%n", link.getCode(), link.getTargetUrl(), link.getClickCount()
+                    .get(), link.getMaxClicks(), link.getCreatedAt(), link.isActive());
             }
         } catch (Exception e) {
             System.out.println("Failed to list links: " + e.getMessage());

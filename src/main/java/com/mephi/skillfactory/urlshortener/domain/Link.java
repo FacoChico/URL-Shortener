@@ -39,4 +39,3 @@ public class Link {
             .isAfter(createdAt.plusSeconds(ttlSeconds));
     }
 }
-

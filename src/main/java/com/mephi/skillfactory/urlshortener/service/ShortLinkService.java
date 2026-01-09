@@ -88,8 +88,7 @@ public class ShortLinkService {
         final var clicks = link.incrementAndGetClicks();
         if (clicks >= link.getMaxClicks()) {
             link.deactivate();
-            notificationService.notify(link.getUserId(),
-                "Link " + code + " reached max clicks and is now inactive");
+            notificationService.notify(link.getUserId(), "Link " + code + " reached max clicks and is now inactive");
         }
         return Optional.of(link);
     }
@@ -116,18 +115,14 @@ public class ShortLinkService {
         for (final var link : linkRepository.findAll()) {
             if (link.isExpired()) {
                 linkRepository.deleteLinkByCode(link.getCode());
-                notificationService.notify(link.getUserId(),
-                    "Link " + link.getCode() + " expired and removed");
+                notificationService.notify(link.getUserId(), "Link " + link.getCode() + " expired and removed");
             }
         }
     }
 
     private void startCleaner() {
         linksCleaner.scheduleAtFixedRate(
-            this::cleanup,
-            appProperties.cleanupIntervalSeconds(),
-            appProperties.cleanupIntervalSeconds(),
-            TimeUnit.SECONDS
+            this::cleanup, appProperties.cleanupIntervalSeconds(), appProperties.cleanupIntervalSeconds(), TimeUnit.SECONDS
         );
     }
 }
