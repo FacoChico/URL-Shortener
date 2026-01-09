@@ -1,0 +1,9 @@
+app:
+  cleanupIntervalSeconds: 1
+
+link:
+  base-url: "http://localhost:8080/api"
+  default-ttl-seconds: 900
+  default-max-clicks: 10
+  codeLength: 7
+  maxShortGenAttempts: 10
