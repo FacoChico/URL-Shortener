@@ -12,12 +12,12 @@ public class CodeGenerator {
     private static final String BASE62 = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private final SecureRandom random = new SecureRandom();
 
-    public String generate(String userUuid, String lonkLink, int length, int attempts) {
+    public String generate(String userUuid, String longLink, int length, int attempts) {
         try {
             final var md = MessageDigest.getInstance("SHA-256");
             md.update(userUuid.getBytes(StandardCharsets.UTF_8));
             md.update((byte) 0);
-            md.update(lonkLink.getBytes(StandardCharsets.UTF_8));
+            md.update(longLink.getBytes(StandardCharsets.UTF_8));
             md.update((byte) 0);
             md.update(Integer.toString(attempts).getBytes(StandardCharsets.UTF_8));
 
