@@ -120,7 +120,7 @@ public class CliRunner implements CommandLineRunner {
         Long ttlSeconds = null;
 
         try {
-            System.out.print("Max clicks (enter for unlimited): ");
+            System.out.print("Max clicks (enter for default): ");
             final var sMax = sc.nextLine().trim();
             if (!sMax.isEmpty()) {
                 maxClicks = Integer.parseInt(sMax);
